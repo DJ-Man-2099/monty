@@ -15,8 +15,8 @@ int main(int argc, char const *argv[])
 {
 	char *file_name = NULL, line[100];
 	unsigned int count = 1;
+	instruction_t *instruction;
 
-	atexit(cleanup);
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -37,7 +37,7 @@ int main(int argc, char const *argv[])
 		{
 			if (line[strlen(line) - 1] == '\n')
 				line[strlen(line) - 1] = '\0';
-			format_instruction(line, count);
+			instruction = format_instruction(line, count);
 			instruction->f(&stack, count);
 			free(instruction);
 			instruction = NULL;
@@ -74,11 +74,11 @@ void free_stack(stack_t **stack)
  *
  * Return: void
  */
-void cleanup(void)
+/* void cleanup(void)
 {
 	if (file != NULL)
 		fclose(file);
 	free_stack(&stack);
 	if (instruction != NULL)
 		free(instruction);
-}
+} */
