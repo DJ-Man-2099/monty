@@ -1,5 +1,4 @@
 #include "monty.h"
-instruction_t *current;
 stack_t *stack = NULL;
 FILE *file = NULL;
 
@@ -36,10 +35,10 @@ int main(int argc, char const *argv[])
 	{
 		if (line[strlen(line) - 1] == '\n')
 			line[strlen(line) - 1] = '\0';
-		current = format_instruction(line, count);
-		current->f(&stack, count);
-		free(current);
-		current = NULL;
+		format_instruction(line, count);
+		instruction->f(&stack, count);
+		free(instruction);
+		instruction = NULL;
 		count++;
 	}
 
@@ -76,6 +75,6 @@ void cleanup(void)
 	if (file != NULL)
 		fclose(file);
 	free_stack(&stack);
-	if (current != NULL)
-		free(current);
+	if (instruction != NULL)
+		free(instruction);
 }

@@ -34,7 +34,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 extern stack_t *global_current_stack, *stack;
-extern instruction_t *current;
+extern instruction_t *instruction;
 extern FILE *file;
 instruction_t *format_instruction(char *line, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);

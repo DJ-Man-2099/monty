@@ -1,7 +1,7 @@
 #include "monty.h"
 #define DELIM " \t"
 stack_t *global_current_stack;
-
+instruction_t *instruction;
 /**
  * format_instruction - monty code reader
  * @line: line to extract function
@@ -14,7 +14,7 @@ stack_t *global_current_stack;
 instruction_t *format_instruction(char *line, unsigned int line_number)
 {
 	char *ptr;
-	instruction_t *instruction = malloc(sizeof(instruction_t));
+	instruction = malloc(sizeof(instruction_t));
 
 	if (instruction == NULL)
 	{
