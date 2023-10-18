@@ -19,3 +19,25 @@ bool is_number(char *str)
 
 	return (true);
 }
+/**
+ * is_empty - str check
+ * @str: str to check
+ *
+ * Return: true if empty,
+ * false otherwise
+ */
+bool is_empty(char *str)
+{
+	if (strlen(str) == 0)
+		return (false);
+	while (*str != '\0')
+	{
+		if ((*str) != ' ' &&
+			(*str) != '\t' &&
+			(*str) != '\n')
+			return (false);
+		str++;
+	}
+
+	return (true);
+}

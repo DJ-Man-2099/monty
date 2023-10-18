@@ -33,7 +33,7 @@ int main(int argc, char const *argv[])
 
 	while (fgets(line, 100, file) != NULL)
 	{
-		if (strlen(line) > 0)
+		if (strlen(line) > 0 && !is_empty(line))
 		{
 			if (line[strlen(line) - 1] == '\n')
 				line[strlen(line) - 1] = '\0';
