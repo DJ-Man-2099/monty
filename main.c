@@ -31,7 +31,7 @@ int main(int argc, char const *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while (fgets(line, 100, file) != NULL)
+	while (fgets(line, 1000000000000000000, file) != NULL)
 	{
 		if (strlen(line) > 0 && !is_empty(line))
 		{
