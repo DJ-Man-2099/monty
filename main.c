@@ -47,6 +47,27 @@ int main(int argc, char const *argv[])
 		current = format_instruction(line, count);
 		current->f(&stack, count);
 		count++;
+		free(current);
 	}
+	fclose(file);
+	free_stack(&stack);
 	return (0);
+}
+/**
+ * free_stack - stack function
+ * @stack: stack to free
+ *
+ * frees stack
+ *
+ * Return: void
+ */
+void free_stack(stack_t **stack)
+{
+	stack_t *current = *stack, *next = *stack;
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
 }
