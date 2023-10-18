@@ -14,8 +14,8 @@ instruction_t *instruction;
 instruction_t *format_instruction(char *line, unsigned int line_number)
 {
 	char *ptr;
-	instruction = malloc(sizeof(instruction_t));
 
+	instruction = malloc(sizeof(instruction_t));
 	if (instruction == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
