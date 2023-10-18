@@ -14,6 +14,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if ((*stack) != NULL)
 		(*stack)->prev = global_current_stack;
 	global_current_stack->next = (*stack);
+	global_current_stack->prev = NULL;
 	(*stack) = global_current_stack;
 }
 /**
