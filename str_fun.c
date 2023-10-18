@@ -10,6 +10,8 @@ bool is_number(char *str)
 {
 	if (strlen(str) == 0)
 		return (false);
+	if (str[0] == '-')
+		str++;
 	while (*str != '\0')
 	{
 		if (!isdigit(*str))
