@@ -109,7 +109,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	if (current == NULL)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", current->n);
