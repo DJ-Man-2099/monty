@@ -26,6 +26,8 @@ instruction_t *format_instruction(char *line, unsigned int line_number)
 	instruction->opcode = ptr;
 	if (strcmp(ptr, "pall") == 0)
 		instruction->f = pall;
+	else if (strcmp(ptr, "pint") == 0)
+		instruction->f = pint;
 	else if (strcmp(ptr, "push") == 0)
 	{
 		instruction->f = push;
@@ -90,4 +92,25 @@ void pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", current->n);
 		current = current->next;
 	}
+}
+/**
+ * pint - monty opcode
+ * @stack: stack to update
+ * @line_number: number of instruction line
+ *
+ * executes the pint
+ *
+ * Return: void
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+
+	(void)line_number;
+	if (current == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", current->n);
 }
