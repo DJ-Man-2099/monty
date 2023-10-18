@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include <ctype.h>
 #define DELIM " \t"
+#define INT_MAX 100000000
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -37,6 +38,7 @@ typedef struct instruction_s
 extern stack_t *global_current_stack, *stack;
 extern instruction_t *instruction;
 extern FILE *file;
+extern char *line;
 instruction_t *format_instruction(char *line, unsigned int line_number);
 bool is_noargs(char *opcode);
 void (*set_noargs(char *opcode))(stack_t **stack, unsigned int line_number);

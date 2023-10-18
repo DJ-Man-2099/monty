@@ -1,6 +1,7 @@
 #include "monty.h"
 stack_t *stack = NULL;
 FILE *file = NULL;
+char *line = NULL;
 
 /**
  * main - check code
@@ -13,9 +14,16 @@ FILE *file = NULL;
  */
 int main(int argc, char const *argv[])
 {
-	char *file_name = NULL, line[100];
+	char *file_name = NULL;
 	unsigned int count = 1;
 
+	line = malloc(sizeof(char) * INT_MAX);
+	if (line == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	memset(line, 0, sizeof(char) * INT_MAX);
 	atexit(cleanup);
 	if (argc != 2)
 	{
@@ -31,7 +39,7 @@ int main(int argc, char const *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while (fgets(line, 1000000000000000000, file) != NULL)
+	while (fgets(line, INT_MAX, file) != NULL)
 	{
 		if (strlen(line) > 0 && !is_empty(line))
 		{
@@ -44,7 +52,6 @@ int main(int argc, char const *argv[])
 			count++;
 		}
 	}
-
 	return (0);
 }
 /**
@@ -81,4 +88,6 @@ void cleanup(void)
 	free_stack(&stack);
 	if (instruction != NULL)
 		free(instruction);
+	if (line != NULL)
+		free(line);
 }
