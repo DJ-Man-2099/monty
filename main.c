@@ -33,13 +33,16 @@ int main(int argc, char const *argv[])
 
 	while (fgets(line, 100, file) != NULL)
 	{
-		if (line[strlen(line) - 1] == '\n')
-			line[strlen(line) - 1] = '\0';
-		format_instruction(line, count);
-		instruction->f(&stack, count);
-		free(instruction);
-		instruction = NULL;
-		count++;
+		if (strlen(line) > 0)
+		{
+			if (line[strlen(line) - 1] == '\n')
+				line[strlen(line) - 1] = '\0';
+			format_instruction(line, count);
+			instruction->f(&stack, count);
+			free(instruction);
+			instruction = NULL;
+			count++;
+		}
 	}
 
 	return (0);
@@ -54,13 +57,14 @@ int main(int argc, char const *argv[])
  */
 void free_stack(stack_t **stack)
 {
-	stack_t *current = *stack, *next = *stack;
+	stack_t *next = *stack;
 
-	while (current != NULL)
+	while ((*stack) != NULL)
 	{
-		next = current->next;
-		free(current);
-		current = next;
+		next = (*stack)->next;
+		free((*stack));
+		(*stack) = NULL;
+		(*stack) = next;
 	}
 }
 /**
