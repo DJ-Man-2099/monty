@@ -21,6 +21,7 @@ instruction_t *format_instruction(char *line, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
+	memset(instruction, 0, sizeof(instruction_t));
 	ptr = strtok(line, DELIM);
 	instruction->opcode = ptr;
 	if (strcmp(ptr, "pall") == 0)
@@ -28,18 +29,19 @@ instruction_t *format_instruction(char *line, unsigned int line_number)
 	else if (strcmp(ptr, "push") == 0)
 	{
 		instruction->f = push;
-		global_current_stack = malloc(sizeof(stack_t));
-		if (global_current_stack == NULL)
-		{
-			fprintf(stderr, "Error: malloc failed\n");
-			exit(EXIT_FAILURE);
-		}
 		ptr = strtok(NULL, DELIM);
 		if (ptr == NULL || !is_number(ptr))
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
+		global_current_stack = malloc(sizeof(stack_t));
+		if (global_current_stack == NULL)
+		{
+			fprintf(stderr, "Error: malloc failed\n");
+			exit(EXIT_FAILURE);
+		}
+		global_current_stack = memset(global_current_stack, 0, sizeof(stack_t));
 		global_current_stack->n = atoi(ptr);
 	}
 	else
