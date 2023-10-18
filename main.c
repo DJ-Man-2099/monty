@@ -49,8 +49,8 @@ int main(int argc, char const *argv[])
 			instruction->f(&stack, count);
 			free(instruction);
 			instruction = NULL;
-			count++;
 		}
+		count++;
 	}
 	return (0);
 }
