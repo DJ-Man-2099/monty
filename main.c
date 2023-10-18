@@ -71,7 +71,7 @@ void free_stack(stack_t **stack)
  *
  * Return: void
  */
-void cleanup()
+void cleanup(void)
 {
 	if (file != NULL)
 		fclose(file);
