@@ -33,10 +33,13 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-extern stack_t *global_current_stack;
+extern stack_t *global_current_stack, *stack;
+extern instruction_t *current;
+extern FILE *file;
 instruction_t *format_instruction(char *line, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 bool is_number(char *str);
 void free_stack(stack_t **stack);
+void cleanup();
 #endif

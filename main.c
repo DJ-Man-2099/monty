@@ -1,4 +1,7 @@
 #include "monty.h"
+instruction_t *current;
+stack_t *stack = NULL;
+FILE *file = NULL;
 
 /**
  * main - check code
@@ -12,11 +15,9 @@
 int main(int argc, char const *argv[])
 {
 	char *file_name = NULL, line[100];
-	FILE *file = NULL;
 	unsigned int count = 1;
-	instruction_t *current;
-	stack_t *stack = NULL;
 
+	atexit(cleanup);
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -37,11 +38,11 @@ int main(int argc, char const *argv[])
 			line[strlen(line) - 1] = '\0';
 		current = format_instruction(line, count);
 		current->f(&stack, count);
-		count++;
 		free(current);
+		current = NULL;
+		count++;
 	}
-	fclose(file);
-	free_stack(&stack);
+
 	return (0);
 }
 /**
@@ -62,4 +63,19 @@ void free_stack(stack_t **stack)
 		free(current);
 		current = next;
 	}
+}
+/**
+ * cleanup - clean at exit
+ *
+ * frees everything
+ *
+ * Return: void
+ */
+void cleanup()
+{
+	if (file != NULL)
+		fclose(file);
+	free_stack(&stack);
+	if (current != NULL)
+		free(current);
 }
