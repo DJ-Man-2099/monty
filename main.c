@@ -11,15 +11,6 @@
  */
 int main(int argc, char const *argv[])
 {
-	/**
-	 * Steps:
-	 * 1. Read File lines
-	 *  1.1. Read Args (done)
-	 *  1.2. Read File (done)
-	 *  1.3. Read Lines Step by Step (done)
-	 * 2. Format command
-	 * 3. Execute command
-	 */
 	char *file_name = NULL, line[100];
 	FILE *file = NULL;
 	unsigned int count = 1;
@@ -64,6 +55,7 @@ int main(int argc, char const *argv[])
 void free_stack(stack_t **stack)
 {
 	stack_t *current = *stack, *next = *stack;
+
 	while (current != NULL)
 	{
 		next = current->next;
