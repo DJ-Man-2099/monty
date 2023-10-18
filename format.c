@@ -63,7 +63,7 @@ instruction_t *format_instruction(char *line, unsigned int line_number)
 bool is_noargs(char *opcode)
 {
 	char *ops[] = {"pall", "pint", "pop",
-				   "swap", "add", NULL};
+				   "swap", "add", "nop", NULL};
 	size_t i;
 
 	for (i = 0; ops[i] != NULL; i++)
@@ -91,6 +91,8 @@ void (*set_noargs(char *opcode))(stack_t **stack, unsigned int line_number)
 		return (swap);
 	else if (strcmp(opcode, "add") == 0)
 		return (add);
+	else if (strcmp(opcode, "nop") == 0)
+		return (nop);
 	else
 		return (pop);
 }

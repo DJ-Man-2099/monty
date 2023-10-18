@@ -23,3 +23,17 @@ void add(stack_t **stack, unsigned int line_number)
 	(*stack)->n = sum;
 	free(old_head);
 }
+/**
+ * nop - monty opcode
+ * @stack: stack to update
+ * @line_number: number of instruction line
+ *
+ * executes the nop
+ *
+ * Return: void
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
