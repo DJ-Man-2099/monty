@@ -5,7 +5,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <ctype.h>
-#define DELIM " \t"
+#define DELIM " \t\n"
 #define INT_MAX 1000000
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
