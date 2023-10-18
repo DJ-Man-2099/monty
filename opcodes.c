@@ -86,3 +86,29 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 	printf("%d\n", current->n);
 }
+/**
+ * swap - monty opcode
+ * @stack: stack to update
+ * @line_number: number of instruction line
+ *
+ * executes the swap
+ *
+ * Return: void
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+
+	(void)line_number;
+	if ((*stack) == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	temp = (*stack)->next->next;
+	(*stack)->next->next = (*stack);
+	(*stack)->next->prev = NULL;
+	(*stack)->next = temp;
+	(*stack)->prev = (*stack)->next;
+	(*stack) = temp->prev;
+}
