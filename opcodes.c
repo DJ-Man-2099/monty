@@ -28,6 +28,8 @@ instruction_t *format_instruction(char *line, unsigned int line_number)
 		instruction->f = pall;
 	else if (strcmp(ptr, "pint") == 0)
 		instruction->f = pint;
+	else if (strcmp(ptr, "pop") == 0)
+		instruction->f = pop;
 	else if (strcmp(ptr, "push") == 0)
 	{
 		instruction->f = push;
@@ -72,6 +74,33 @@ void push(stack_t **stack, unsigned int line_number)
 		global_current_stack->next = (*stack);
 	}
 	(*stack) = global_current_stack;
+}
+/**
+ * pop - monty opcode
+ * @stack: stack to update
+ * @line_number: number of instruction line
+ *
+ * executes the pop
+ *
+ * Return: void
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *new_current = NULL;
+
+	(void)line_number;
+	if ((*stack) == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->next != NULL)
+	{
+		new_current = (*stack)->next;
+		new_current->prev = NULL;
+	}
+	free((*stack));
+	(*stack) = new_current;
 }
 /**
  * pall - monty opcode
