@@ -56,6 +56,7 @@ void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
 bool is_number(char *str);
 bool is_empty(char *str);
 void free_stack(stack_t **stack);

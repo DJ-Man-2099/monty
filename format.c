@@ -70,7 +70,7 @@ bool is_noargs(char *opcode)
 				   "swap", "add", "nop",
 				   "sub", "div", "mul",
 				   "mod", "pchar", "pstr",
-				   "rotl", NULL};
+				   "rotl", "rotr", NULL};
 	size_t i;
 
 	for (i = 0; ops[i] != NULL; i++)
@@ -114,6 +114,8 @@ void (*set_noargs(char *opcode))(stack_t **stack, unsigned int line_number)
 		return (pstr);
 	else if (strcmp(opcode, "rotl") == 0)
 		return (rotl);
+	else if (strcmp(opcode, "rotr") == 0)
+		return (rotr);
 	else
 		return (pop);
 }
