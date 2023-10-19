@@ -64,7 +64,8 @@ bool is_noargs(char *opcode)
 {
 	char *ops[] = {"pall", "pint", "pop",
 				   "swap", "add", "nop",
-				   "sub", "div", NULL};
+				   "sub", "div", "mul",
+				   NULL};
 	size_t i;
 
 	for (i = 0; ops[i] != NULL; i++)
@@ -98,6 +99,8 @@ void (*set_noargs(char *opcode))(stack_t **stack, unsigned int line_number)
 		return (sub);
 	else if (strcmp(opcode, "div") == 0)
 		return (_div);
+	else if (strcmp(opcode, "mul") == 0)
+		return (mul);
 	else
 		return (pop);
 }
