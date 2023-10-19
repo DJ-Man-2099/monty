@@ -56,7 +56,7 @@ void sub(stack_t **stack, unsigned int line_number)
  *
  * Return: void
  */
-void div(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
 	int sum = 0;
 	stack_t *old_head = *stack;

@@ -1,4 +1,5 @@
 #include "monty.h"
+
 stack_t *stack = NULL;
 FILE *file = NULL;
 char *line = NULL;
