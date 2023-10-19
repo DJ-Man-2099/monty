@@ -10,17 +10,15 @@
  */
 void rotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current = *stack, *end,
-			*new_start;
+	stack_t *current = *stack, *end;
 
 	(void)line_number;
 	if (current != NULL && current->next != NULL)
 	{
-		new_start = current->next;
 		end = get_end(*stack);
-		current->prev = end;
+		end->prev->next = NULL;
+		end->prev = NULL;
 		end->next = current;
-		current->next = NULL;
-		*stack = new_start;
+		*stack = end;
 	}
 }
