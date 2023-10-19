@@ -98,3 +98,27 @@ void pstr(stack_t **stack, unsigned int line_number)
 	}
 	printf("\n");
 }
+/**
+ * rotl - monty opcode
+ * @stack: stack to update
+ * @line_number: number of instruction line
+ *
+ * executes the rotl
+ *
+ * Return: void
+ */
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack, *end = get_end(*stack),
+			*new_start;
+
+	(void)line_number;
+	if (current != NULL && current->next != NULL)
+	{
+		new_start = current->next;
+		current->prev = end;
+		end->next = current;
+		current->next = NULL;
+		*stack = new_start;
+	}
+}
