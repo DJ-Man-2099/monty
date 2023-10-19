@@ -65,7 +65,6 @@ void pchar(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
 
-	(void)line_number;
 	if (current == NULL)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
@@ -77,4 +76,25 @@ void pchar(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	printf("%c\n", current->n);
+}
+/**
+ * pstr - monty opcode
+ * @stack: stack to update
+ * @line_number: number of instruction line
+ *
+ * executes the pstr
+ *
+ * Return: void
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+
+	(void)line_number;
+	while (current != NULL && current->n <= 127 && current->n > 0)
+	{
+		printf("%c", current->n);
+		current = current->next;
+	}
+	printf("\n");
 }
