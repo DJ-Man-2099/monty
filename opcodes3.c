@@ -52,3 +52,29 @@ void mod(stack_t **stack, unsigned int line_number)
 	(*stack)->n = sum;
 	free(old_head);
 }
+/**
+ * pchar - monty opcode
+ * @stack: stack to update
+ * @line_number: number of instruction line
+ *
+ * executes the pchar
+ *
+ * Return: void
+ */
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+
+	(void)line_number;
+	if (current == NULL)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (!__isascii(current->n))
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", current->n);
+}
