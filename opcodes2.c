@@ -48,7 +48,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	free(old_head);
 }
 /**
- * div - monty opcode
+ * _div - monty opcode
  * @stack: stack to update
  * @line_number: number of instruction line
  *
