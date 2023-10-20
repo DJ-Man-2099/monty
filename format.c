@@ -44,15 +44,12 @@ instruction_t *format_instruction(char *line, unsigned int line_number)
 		global_current_stack->n = atoi(ptr);
 	}
 	else if (ptr[0] == '#')
-	{
 		instruction->f = nop;
-	}
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, ptr);
 		exit(EXIT_FAILURE);
 	}
-
 	return (instruction);
 }
 /**
